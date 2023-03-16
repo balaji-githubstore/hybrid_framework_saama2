@@ -3,6 +3,8 @@ from selenium import webdriver
 
 
 class WebDriverWrapper:
+    driver = None
+
     @pytest.fixture(scope="function", autouse=True)
     def browser_config(self):
         self.driver = webdriver.Edge()
