@@ -37,3 +37,15 @@ print(list)
 """can be done in single line by using values property """
 print(df.values.tolist())
 
+print(100 * "-")
+"""read excel"""
+
+df=pandas.read_excel(io='../test_data/orange_test_data.xlsx',sheet_name='test_add_valid_employee')
+print(df)
+print(df.values.tolist())
+
+print(100 * "-")
+profile_name="john Wick"
+# print("//h6[normalize-space()='"+str(profile_name)+"']")
+
+print(f"//h6[normalize-space()='{profile_name}']")
