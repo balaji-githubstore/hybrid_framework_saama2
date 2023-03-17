@@ -1,0 +1,3 @@
+username;password;expected_error
+abi787878;abi123;Invalid credential
+kim;kim123;Invalid credentials
