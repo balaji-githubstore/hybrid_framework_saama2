@@ -16,8 +16,8 @@ class TestAddEmployee(WebDriverWrapper):
                                 expected_firstname):
         self.driver.find_element(By.NAME, "username").send_keys(username)
         self.driver.find_element(By.NAME, "password").send_keys(password)
-
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
+
         self.driver.find_element(By.XPATH, "//span[normalize-space()='PIM']").click()
         self.driver.find_element(By.LINK_TEXT, "Add Employee").click()
 
