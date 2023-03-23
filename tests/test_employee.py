@@ -5,6 +5,8 @@ from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
 
 from base.webdriver_listner import WebDriverWrapper
+from pages.login_page import LoginPage
+from pages.main_page import Mainpage
 from utilities.data_source import DataSource
 
 
@@ -14,18 +16,25 @@ class TestAddEmployee(WebDriverWrapper):
                              DataSource.test_add_valid_employee_data)
     def test_add_valid_employee(self, username, password, firstname, middlename, lastname, expected_header,
                                 expected_firstname):
-        self.driver.find_element(By.NAME, "username").send_keys(username)
-        self.driver.find_element(By.NAME, "password").send_keys(password)
-        self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()
 
-        self.driver.find_element(By.XPATH, "//span[normalize-space()='PIM']").click()
+        login_page = LoginPage(self.driver)
+        login_page.enter_username(username)
+        login_page.enter_password(password)
+        login_page.click_on_login()
+
+        main_page=Mainpage(self.driver)
+        main_page.click_on_pim_menu()
+
+        #PIMPage
         self.driver.find_element(By.LINK_TEXT, "Add Employee").click()
 
+        #AddEmployeePage
         self.driver.find_element(By.NAME, "firstName").send_keys(firstname)
         self.driver.find_element(By.NAME, "middleName").send_keys(middlename)
         self.driver.find_element(By.NAME, "lastName").send_keys(lastname)
         self.driver.find_element(By.XPATH, "//button[normalize-space()='Save']").click()
 
+        #get data under PersonalPage
         actual_header = self.driver.find_element(By.XPATH, f"//h6[normalize-space()='{expected_header}']").text
 
         """ wait for firstname textbox contains firstname value """
