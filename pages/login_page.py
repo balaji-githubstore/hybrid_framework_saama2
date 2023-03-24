@@ -20,7 +20,7 @@ class LoginPage(AutomationKeywords):
 
     def enter_password(self, password):
         # self.driver.find_element(By.NAME, "password").send_keys(password)
-        self.type_by_locator((By.NAME, "password"), password)
+        self.type_by_locator(self.__password_locator, password)
 
     def click_on_login(self):
         # self.driver.find_element(By.XPATH, "//button[normalize-space()='Login']").click()

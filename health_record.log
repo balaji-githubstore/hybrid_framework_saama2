@@ -1,0 +1,16 @@
+INFO     root:test_login.py:32 Entered Username abi787878
+INFO     root:test_login.py:34 Entered Password abi123
+INFO     root:test_login.py:36 Clicked on login
+INFO     root:test_login.py:39 Actual Error MessageInvalid credentials
+INFO     root:test_login.py:32 Entered Username kim
+INFO     root:test_login.py:34 Entered Password kim123
+INFO     root:test_login.py:36 Clicked on login
+INFO     root:test_login.py:39 Actual Error MessageInvalid credentials
+INFO     root:test_login.py:32 Entered Username abi787878
+INFO     root:test_login.py:34 Entered Password abi123
+INFO     root:test_login.py:36 Clicked on login
+INFO     root:test_login.py:39 Actual Error MessageInvalid credentials
+INFO     root:test_login.py:32 Entered Username kim
+INFO     root:test_login.py:34 Entered Password kim123
+INFO     root:test_login.py:36 Clicked on login
+INFO     root:test_login.py:39 Actual Error MessageInvalid credentials

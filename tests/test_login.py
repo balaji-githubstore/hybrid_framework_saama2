@@ -1,8 +1,10 @@
+import assertpy
 import pytest
 from assertpy import assert_that
 from selenium.webdriver.common.by import By
 
 from base.webdriver_listner import WebDriverWrapper
+from base import webdriver_listner
 from pages.dashboard_page import DashboardPage
 from pages.login_page import LoginPage
 from utilities.data_source import DataSource
@@ -21,14 +23,24 @@ class TestLogin(WebDriverWrapper):
 
         assert_that('Dashboard').is_equal_to(actual_header)
 
+    @pytest.mark.invalid
     @pytest.mark.parametrize('username,password,expected_error', DataSource.test_invalid_data_csv)
     def test_invalid_login(self, username, password, expected_error):
-        login_page = LoginPage(self.driver)
-        login_page.enter_username(username)
-        login_page.enter_password(password)
-        login_page.click_on_login()
+        try:
+            login_page = LoginPage(self.driver)
+            login_page.enter_username(username)
+            webdriver_listner.LOGGER.info("Entered Username " + username)
+            login_page.enter_password(password)
+            webdriver_listner.LOGGER.info("Entered Password " + password)
+            login_page.click_on_login()
+            webdriver_listner.LOGGER.info("Clicked on login")
 
-        assert_that(login_page.get_error_message).contains(expected_error)
+            actual_error = login_page.get_error_message
+            webdriver_listner.LOGGER.info("Actual Error Message" + actual_error)
+            assert_that(actual_error).contains(expected_error)
+        except BaseException as error:
+            webdriver_listner.LOGGER.error("Failure" + error)
+            assertpy.fail("test_invalid_login")
 
 
 @pytest.mark.ui
