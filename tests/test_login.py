@@ -23,7 +23,7 @@ class TestLogin(WebDriverWrapper):
         actual_error = self.driver.find_element(By.XPATH, "//p[contains(normalize-space(),'Invalid')]").text
         assert_that(actual_error).contains(expected_error)
 
-
+#update code
 @pytest.mark.ui
 class TestLoginUI(WebDriverWrapper):
     @pytest.mark.smoke
