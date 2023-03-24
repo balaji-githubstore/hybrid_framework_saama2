@@ -1,7 +1,9 @@
 """ Not Part of the framework.
 Will be deleted"""
 import pandas
+import config
 
+print(config.test_data_path)
 df = pandas.read_csv(filepath_or_buffer='../test_data/test_invalid_data.csv', delimiter=';')
 
 print(df)
