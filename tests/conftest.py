@@ -19,7 +19,7 @@ def db_load3():
 
 @pytest.fixture(scope="class")
 def browser_config(request):
-    driver = webdriver.Chrome()
+    driver = webdriver.Edge()
     driver.maximize_window()
     driver.implicitly_wait(20)
     driver.get('https://opensource-demo.orangehrmlive.com/')
